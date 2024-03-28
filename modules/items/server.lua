@@ -115,7 +115,7 @@ CreateThread(function()
 
 		Wait(500)
 
-	elseif shared.framework == 'qb' then
+	--[[elseif shared.framework == 'qb' then
 		local QBCore = exports['qb-core']:GetCoreObject()
 		local items = QBCore.Shared.Items
 
@@ -189,7 +189,7 @@ CreateThread(function()
 	},
 ]]
 
-				local fileSize = #file
+				--[[local fileSize = #file
 
 				for _, item in pairs(dump) do
 					if not ItemList[item.name] then
@@ -216,7 +216,7 @@ CreateThread(function()
 			end
 		end
 
-		Wait(500)
+		Wait(500)--]]
 	end
 
 	local count = 0
@@ -239,14 +239,6 @@ local function GenerateText(num)
 		str = table.concat(str)
 	until str ~= 'POL' and str ~= 'EMS'
 	return str
-end
-
-local function GenerateSerial(text)
-	if text and text:len() > 3 then
-		return text
-	end
-
-	return ('%s%s%s'):format(math.random(100000,999999), text == nil and GenerateText(3) or text, math.random(100000,999999))
 end
 
 local function setItemDurability(item, metadata)
@@ -288,7 +280,7 @@ function Items.Metadata(inv, item, metadata, count)
 
 			if registered then
 				metadata.registered = registered
-				metadata.serial = GenerateSerial(metadata.serial)
+				metadata.serial = exports['brazzers-lib']:GenerateSerial(inv.id, metadata.serial)
 			else
 				metadata.registered = nil
 			end
@@ -416,7 +408,7 @@ end
 ---@param ostime? number
 ---@return boolean? removed
 function Items.UpdateDurability(inv, slot, item, value, ostime)
-    local durability = slot.metadata.durability
+    local durability = slot.metadata.durability or value
 
     if not durability then return end
 

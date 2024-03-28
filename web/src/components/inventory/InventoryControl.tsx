@@ -6,7 +6,8 @@ import { DragSource } from '../../typings';
 import { onUse } from '../../dnd/onUse';
 import { onGive } from '../../dnd/onGive';
 import { fetchNui } from '../../utils/fetchNui';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Locale } from '../../store/locale';
 import { IconButton } from '@mui/material';
@@ -38,9 +39,14 @@ const InventoryControl: React.FC = () => {
     dispatch(setItemAmount(event.target.valueAsNumber));
   };
 
+  const openPouch = () => {
+    fetchNui('openPersonalPouch');
+  };
+
   return (
     <>
       <UsefulControls infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
+
       <div className="inventory-control">
         <div className="inventory-control-wrapper">
           <input className="inventory-control-input" type="number" defaultValue={itemAmount} onChange={inputHandler} />
@@ -50,14 +56,15 @@ const InventoryControl: React.FC = () => {
           <button className="inventory-control-button" ref={give}>
             {Locale.ui_give || 'Give'}
           </button>
-          <button className="inventory-control-button" onClick={() => fetchNui('exit')}>
-            {Locale.ui_close || 'Close'}
-          </button>
         </div>
       </div>
 
-      <IconButton className="useful-controls-button" size="large" onClick={() => setInfoVisible(true)}>
-        <FontAwesomeIcon icon={faInfoCircle} />
+      <IconButton className="useful-info-button" size="medium" onClick={() => setInfoVisible(true)}>
+        <FontAwesomeIcon icon={faGear} />
+      </IconButton>
+
+      <IconButton className="useful-inv-button" size="medium" onClick={() => openPouch()}>
+        <FontAwesomeIcon icon={faBagShopping} />
       </IconButton>
     </>
   );

@@ -9,9 +9,10 @@ local Inventory = require 'modules.inventory.server'
 local function createCraftingBench(id, data)
 	CraftingBenches[id] = {}
 	local recipes = data.items
+	local amount = recipes and #recipes or 0
 
-	if recipes then
-		for i = 1, #recipes do
+	if amount > 0 then
+		for i = 1, amount do
 			local recipe = recipes[i]
 			local item = Items(recipe.name)
 
@@ -39,9 +40,13 @@ local function createCraftingBench(id, data)
 			data.zones = nil
 		end
 
+		data.slots = amount
+
 		CraftingBenches[id] = data
 	end
 end
+
+exports('RegisterCraftStation', createCraftingBench)
 
 for id, data in pairs(data('crafting')) do createCraftingBench(id, data) end
 
@@ -84,7 +89,7 @@ lib.callback.register('ox_inventory:openCraftingBench', function(source, id, ind
 		left:openInventory(left)
 	end
 
-	return { label = left.label, type = left.type, slots = left.slots, weight = left.weight, maxWeight = left.maxWeight }
+	return { label = left.label, type = left.type, slots = left.slots, weight = left.weight, maxWeight = left.maxWeight }, bench
 end)
 
 local TriggerEventHooks = require 'modules.hooks.server'
@@ -112,7 +117,8 @@ lib.callback.register('ox_inventory:craftItem', function(source, id, index, reci
 			end
 
 			local craftedItem = Items(recipe.name)
-			local newWeight = left.weight + (craftedItem.weight + (recipe.metadata?.weight or 0)) * (recipe.count or 1)
+			local craftCount = (type(recipe.count) == 'number' and recipe.count) or (table.type(recipe.count) == 'array' and math.random(recipe.count[1], recipe.count[2])) or 1
+			local newWeight = left.weight + (craftedItem.weight + (recipe.metadata?.weight or 0)) * craftCount
 			---@todo new iterator or something to accept a map
 			local items = Inventory.Search(left, 'slots', tbl) or {}
 			table.wipe(tbl)
@@ -175,7 +181,7 @@ lib.callback.register('ox_inventory:craftItem', function(source, id, index, reci
 				toSlot = toSlot,
 			}) then return false end
 
-			local success = lib.callback.await('ox_inventory:startCrafting', source, id, recipeId)
+			local success = lib.callback.await('ox_inventory:startCrafting', source, recipe)
 
 			if success then
 				for name, needs in pairs(recipe.ingredients) do
@@ -220,7 +226,7 @@ lib.callback.register('ox_inventory:craftItem', function(source, id, index, reci
 					end
 				end
 
-				Inventory.AddItem(left, craftedItem, recipe.count or 1, recipe.metadata or {}, craftedItem.stack and toSlot or nil)
+				Inventory.AddItem(left, craftedItem, craftCount, recipe.metadata or {}, craftedItem.stack and toSlot or nil)
 			end
 
 			return success

@@ -14,13 +14,13 @@ local Inventory = require 'modules.inventory.server'
 ---@param source number
 ---@param amount number
 exports('addCash', function(source, amount)
-	Inventory.AddItem(source, 'money', amount)
+	--Inventory.AddItem(source, 'money', amount)
 end)
 
 ---@param source number
 ---@param amount number
 exports('removeCash', function(source, amount)
-	Inventory.RemoveItem(source, 'money', amount)
+	--Inventory.RemoveItem(source, 'money', amount)
 end)
 
 ---@param source number

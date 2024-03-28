@@ -75,7 +75,7 @@ const UsefulControls: React.FC<Props> = ({ infoVisible, setInfoVisible }) => {
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Alert severity="success" color="info" sx={{ width: '100%' }}>
-          Made with 🐂 by the Overextended team
+        🐂 & Manny Loves You
         </Alert>
       </Snackbar>
     </Dialog>

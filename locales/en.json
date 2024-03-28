@@ -76,11 +76,11 @@
   "locker_must_number": "Locker must be a number",
   "weapon_hand_required": "You must have a weapon in hand",
   "weapon_hand_wrong": "Wrong weapon in hand",
-  "open_player_inventory": "Open player inventory~",
-  "open_secondary_inventory": "Open secondary inventory~",
-  "disable_hotbar": "Display inventory hotbar~",
+  "open_player_inventory": "HUD: Open player inventory~",
+  "open_secondary_inventory": "HUD: Open secondary inventory~",
+  "disable_hotbar": "HUD: Display inventory hotbar~",
   "reload_weapon": "Reload weapon~",
-  "use_hotbar": "Use hotbar item %s~",
+  "use_hotbar": "HUD: Use hotbar item %s~",
   "no_durability": "%s durability is depleted",
   "cannot_give": "Unable to give %s %s to the target",
   "evidence_cannot_take": "You are not authorised to withdraw evidence",
@@ -88,5 +88,6 @@
   "crafting_item": "Crafting %s",
   "crafting_bench": "Crafting Bench",
   "open_crafting_bench": "Open Crafting Bench",
-  "not_enough_durability": "%s does not have enough durability"
+  "not_enough_durability": "%s does not have enough durability",
+  "storage": "Storage"
 }

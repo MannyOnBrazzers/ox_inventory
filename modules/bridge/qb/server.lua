@@ -44,7 +44,7 @@ local function setupPlayer(Player)
 
 	server.setPlayerInventory(Player.PlayerData)
 
-	Inventory.SetItem(Player.PlayerData.source, 'money', Player.PlayerData.money.cash)
+	--Inventory.SetItem(Player.PlayerData.source, 'money', Player.PlayerData.money.cash)
 
 	QBCore.Functions.AddPlayerMethod(Player.PlayerData.source, "AddItem", function(item, amount, slot, info)
 		return Inventory.AddItem(Player.PlayerData.source, item, amount, info, slot)
@@ -102,13 +102,13 @@ function server.UseItem(source, itemName, data)
 end
 
 AddEventHandler('QBCore:Server:OnMoneyChange', function(src, account, amount, changeType)
-	if account ~= "cash" then return end
+	--[[if account ~= "cash" then return end
 
 	local item = Inventory.GetItem(src, 'money', nil, false)
 
     if not item then return end
 
-	Inventory.SetItem(src, 'money', changeType == "set" and amount or changeType == "remove" and item.count - amount or changeType == "add" and item.count + amount)
+	Inventory.SetItem(src, 'money', changeType == "set" and amount or changeType == "remove" and item.count - amount or changeType == "add" and item.count + amount)--]]
 end)
 
 ---@diagnostic disable-next-line: duplicate-set-field
@@ -131,7 +131,7 @@ end
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.syncInventory(inv)
-	local accounts = Inventory.GetAccountItemCounts(inv)
+	--[[local accounts = Inventory.GetAccountItemCounts(inv)
 
     if accounts then
         local player = server.GetPlayerFromId(inv.id)
@@ -140,7 +140,7 @@ function server.syncInventory(inv)
         if accounts.money and accounts.money ~= player.Functions.GetMoney('cash') then
 			player.Functions.SetMoney('cash', accounts.money, "Sync money with inventory")
 		end
-	end
+	end--]]
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
@@ -156,11 +156,11 @@ function server.buyLicense(inv, license)
 
 	if player.PlayerData.metadata.licences[license.name] then
 		return false, 'already_have'
-	elseif Inventory.GetItem(inv, 'money', false, true) < license.price then
-		return false, 'can_not_afford'
+	--elseif Inventory.GetItem(inv, 'money', false, true) < license.price then
+		--return false, 'can_not_afford'
 	end
 
-	Inventory.RemoveItem(inv, 'money', license.price)
+	--Inventory.RemoveItem(inv, 'money', license.price)
 	player.PlayerData.metadata.licences[license.name] = true
 	player.Functions.SetMetaData('licences', player.PlayerData.metadata.licences)
 

@@ -1,6 +1,7 @@
 local onLogout, Weapon = ...
 local QBCore = exports['qb-core']:GetCoreObject()
 local Inventory = require 'modules.inventory.client'
+local Weapon = require 'modules.weapon.client'
 
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', onLogout)
 
@@ -25,10 +26,15 @@ RegisterNetEvent('QBCore:Player:SetPlayerData', function(data)
 end)
 
 RegisterNetEvent('police:client:GetCuffed', function()
-	PlayerData.cuffed = not PlayerData.cuffed
+	PlayerData.cuffed = true
 	LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
 
-	if not PlayerData.cuffed then return end
+	Weapon.Disarm()
+end)
+
+RegisterNetEvent('police:client:GetUnCuffed', function()
+	PlayerData.cuffed = false
+	LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
 
 	Weapon.Disarm()
 end)

@@ -94,7 +94,7 @@ end
 
 ---@param source number
 ---@param invType string
----@param data string|number|table
+---@param data? string|number|table
 ---@param ignoreSecurityChecks boolean?
 ---@return boolean|table|nil
 ---@return table?
@@ -104,7 +104,12 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 	local left = Inventory(source) --[[@as OxInventory]]
 	local right, closestCoords
 
-	Inventory.CloseAll(left, (invType == 'drop' or invType == 'container' or not invType) and source)
+    left:closeInventory(true)
+	Inventory.CloseAll(left, source)
+
+    if invType == 'player' and data == source then
+        data = nil
+    end
 
 	if data then
 		if invType == 'stash' then
@@ -136,7 +141,7 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 				end
 			end
 		elseif invType == 'container' then
-			left.containerSlot = data
+			left.containerSlot = data --[[@as number]]
 			data = left.items[data]
 
 			if data then
@@ -161,6 +166,8 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 		if invType == 'container' then hookPayload.slot = left.containerSlot end
 
 		if not TriggerEventHooks('openInventory', hookPayload) then return end
+
+        if left == right then return end
 
 		if right.player then
 			if right.open then return end
@@ -217,7 +224,7 @@ end)
 ---@param invType string
 ---@param data string|number|table
 exports('forceOpenInventory', function(playerId, invType, data)
-	local left, right = openInventory(playerId, invType, data)
+	local left, right = openInventory(playerId, invType, data, true)
 
 	if left and right then
 		TriggerClientEvent('ox_inventory:forceOpenInventory', playerId, left, right)
@@ -302,7 +309,7 @@ lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, m
 		end
 
 		if item and data and data.count > 0 and data.name == item.name then
-			data = {name=data.name, label=label, count=data.count, slot=slot, metadata=data.metadata}
+			data = {name=data.name, label=label, count=data.count, slot=slot, metadata=data.metadata, weight=data.weight}
 
 			if item.ammo then
 				if inventory.weapon then
@@ -435,6 +442,8 @@ lib.addCommand({'additem', 'giveitem'}, {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
+	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
+
 	local item = Items(args.item)
 
 	if item then
@@ -446,10 +455,12 @@ lib.addCommand({'additem', 'giveitem'}, {
 			return Citizen.Trace(('Failed to give %sx %s to player %s (%s)'):format(count, item.name, args.target, response))
 		end
 
+		src = source
 		source = Inventory(source) or { label = 'console', owner = 'console' }
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label))
+			exports['brazzers-logs']:addLog('admin', 'Gave Item', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label), 15844367, src)
 		end
 	end
 end)
@@ -464,6 +475,8 @@ lib.addCommand('removeitem', {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
+	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
+
 	local item = Items(args.item)
 
 	if item and args.count > 0 then
@@ -474,10 +487,12 @@ lib.addCommand('removeitem', {
 			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(args.count, item.name, args.target, response))
 		end
 
+		src = source
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label))
+			exports['brazzers-logs']:addLog('admin', 'Removed Item', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label), 15844367, src)
 		end
 	end
 end)
@@ -492,6 +507,8 @@ lib.addCommand('setitem', {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
+	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
+	
 	local item = Items(args.item)
 
 	if item then
@@ -502,10 +519,12 @@ lib.addCommand('setitem', {
 			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, args.count, args.target, response))
 		end
 
+		src = source
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count))
+			exports['brazzers-logs']:addLog('admin', 'Set Item', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count), 15844367, src)
 		end
 	end
 end)
@@ -564,7 +583,7 @@ lib.addCommand('saveinv', {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-	Inventory.SaveInventories(args.lock == 'true')
+	Inventory.SaveInventories(args.lock == 'true', false)
 end)
 
 lib.addCommand('viewinv', {
@@ -582,4 +601,10 @@ lib.addCommand('viewinv', {
 		playerInventory:openInventory(inventory)
 		TriggerClientEvent('ox_inventory:viewInventory', source, inventory)
 	end
+end)
+
+lib.callback.register('brazzers-inv:server:registerPersonalPouch', function(source, id)
+	local cid = exports['brazzers-lib']:getCID(source)
+    exports.ox_inventory:RegisterStash(id, 'Personal Pouch', 5, 5000)
+    return true
 end)
