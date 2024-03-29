@@ -19,7 +19,7 @@ function Inventory.OpenDumpster(entity)
 end
 
 local Utils = require 'modules.utils.client'
-local Vehicles = data 'vehicles'
+local Vehicles = lib.load('data.vehicles')
 local backDoorIds = { 2, 3 }
 
 function Inventory.CanAccessTrunk(entity)
@@ -34,7 +34,7 @@ function Inventory.CanAccessTrunk(entity)
     ---@type number | number[]
     local doorId = checkVehicle and 4 or 5
 
-    if not GetIsDoorValid(entity, doorId --[[@as number]]) then
+    if not Vehicles.trunk.boneIndex?[vehicleHash] and not GetIsDoorValid(entity, doorId --[[@as number]]) then
         if vehicleClass ~= 11 and (doorId ~= 5 or GetEntityBoneIndexByName(entity, 'boot') ~= -1 or not GetIsDoorValid(entity, 2)) then
             return
         end
@@ -45,8 +45,8 @@ function Inventory.CanAccessTrunk(entity)
     end
 
     local min, max = GetModelDimensions(vehicleHash)
-    local offset = (max - min) * (not checkVehicle and vec3(0.5, 0.0, 0.3) or vec3(0.5, 1.0, 0.3)) + min
-    offset = GetOffsetFromEntityInWorldCoords(entity, offset.x, offset.y, (offset.z / -2))
+    local offset = (max - min) * (not checkVehicle and vec3(0.5, 0, 0.5) or vec3(0.5, 1, 0.5)) + min
+    offset = GetOffsetFromEntityInWorldCoords(entity, offset.x, offset.y, offset.z)
 
     if #(GetEntityCoords(cache.ped) - offset) < 1.5 then
         local coords = GetEntityCoords(entity)
@@ -63,13 +63,7 @@ function Inventory.OpenTrunk(entity)
 
     if not door then return end
 
-	local isLocked = false
-    if Entity(entity).state.vehicleLock then
-        if Entity(entity).state.vehicleLock.lock ~= 1 then isLocked = true end
-    else
-        if GetVehicleDoorLockStatus(entity) ~= 0 then isLocked = true end
-    end
-    if isLocked then
+    if GetVehicleDoorLockStatus(entity) > 1 then
         return lib.notify({ id = 'vehicle_locked', type = 'error', description = locale('vehicle_locked') })
     end
 
@@ -80,13 +74,7 @@ function Inventory.OpenTrunk(entity)
     TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
 
     if not client.openInventory('trunk', { id = invId, netid = NetworkGetNetworkIdFromEntity(entity), entityid = entity, door = door }) then return end
-	if NetworkGetEntityIsNetworked(entity) then
-        NetworkRequestControlOfEntity(entity)
-        while (NetworkGetEntityOwner(entity) ~= NetworkPlayerIdToInt()) do
-            NetworkRequestControlOfEntity(entity)
-            Wait(1)
-        end
-    end
+
     if type(door) == 'table' then
         for i = 1, #door do
             SetVehicleDoorOpen(entity, door[i], false, false)
@@ -97,6 +85,13 @@ function Inventory.OpenTrunk(entity)
 end
 
 if shared.target then
+	exports.ox_target:addModel(Inventory.Dumpsters, {
+        icon = 'fas fa-dumpster',
+        label = locale('search_dumpster'),
+        onSelect = function(data) return Inventory.OpenDumpster(data.entity) end,
+        distance = 2
+	})
+
     exports.ox_target:addGlobalVehicle({
         icon = 'fas fa-truck-ramp-box',
         label = locale('open_label', locale('storage')),
@@ -106,6 +101,14 @@ if shared.target then
             return Inventory.OpenTrunk(data.entity)
         end
     })
+else
+	local dumpsters = table.create(0, #Inventory.Dumpsters)
+
+	for i = 1, #Inventory.Dumpsters do
+		dumpsters[Inventory.Dumpsters[i]] = true
+	end
+
+	Inventory.Dumpsters = dumpsters
 end
 
 ---@param search 'slots' | 1 | 'count' | 2
@@ -294,7 +297,7 @@ local function nearbyEvidence(point)
 	end
 end
 
-Inventory.Evidence = setmetatable(data('evidence'), {
+Inventory.Evidence = setmetatable(lib.load('data.evidence'), {
 	__call = function(self)
 		for _, evidence in pairs(self) do
 			if evidence.point then
@@ -336,7 +339,7 @@ local function nearbyStash(self)
 	DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
 end
 
-Inventory.Stashes = setmetatable(data('stashes'), {
+Inventory.Stashes = setmetatable(lib.load('data.stashes'), {
 	__call = function(self)
 		for id, stash in pairs(self) do
 			if stash.jobs then stash.groups = stash.jobs end
@@ -389,6 +392,18 @@ RegisterNetEvent('ox_inventory:refreshMaxWeight', function(data)
 			weightData = {
 				inventoryId = data.inventoryId,
 				maxWeight = data.maxWeight
+			}
+		}
+	})
+end)
+
+RegisterNetEvent('ox_inventory:refreshSlotCount', function(data)
+	SendNUIMessage({
+		action = 'refreshSlots',
+		data = {
+			slotsData = {
+				inventoryId = data.inventoryId,
+				slots = data.slots
 			}
 		}
 	})

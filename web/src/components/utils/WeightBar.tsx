@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 const colorChannelMixer = (colorChannelA: number, colorChannelB: number, amountToMix: number) => {
   let channelA = colorChannelA * amountToMix;
@@ -15,13 +15,13 @@ const colorMixer = (rgbA: number[], rgbB: number[], amountToMix: number) => {
 
 const COLORS = {
   // Colors used - https://materialui.co/flatuicolors
-  primaryColor: [17, 225, 160], // Red (Pomegranate)
-  secondColor: [17, 225, 160], // Green (Nephritis)
-  accentColor: [17, 225, 160], // Orange (Oragne)
+  primaryColor: [191, 207, 243], // Red (Pomegranate)
+  secondColor: [191, 207, 243], // Green (Nephritis)
+  accentColor: [191, 207, 243], // Orange (Oragne)
 };
 
 const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percent, durability }) => {
-  const color = React.useMemo(
+  const color = useMemo(
     () =>
       durability
         ? percent < 50

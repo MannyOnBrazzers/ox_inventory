@@ -48,7 +48,7 @@ end
 
 exports('RegisterCraftStation', createCraftingBench)
 
-for id, data in pairs(data('crafting')) do createCraftingBench(id, data) end
+for id, data in pairs(lib.load('data.crafting')) do createCraftingBench(id, data) end
 
 ---falls back to player coords if zones and points are both nil
 ---@param source number
