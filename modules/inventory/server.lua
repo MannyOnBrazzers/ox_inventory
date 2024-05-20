@@ -1127,7 +1127,6 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 
 		if invokingResource then
 			lib.logger(inv.owner, 'addItem', ('"%s" added %sx %s to "%s"'):format(invokingResource, count, item.name, inv.label))
-			exports['brazzers-logs']:addLog('inventory', 'Added Item', ('"%s" added %sx %s to "%s"'):format(invokingResource, count, item.name, inv.label), 15844367, inv.id)
 		end
 
 		success = true
@@ -1150,7 +1149,6 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 
 		if invokingResource then
 			lib.logger(inv.owner, 'addItem', ('"%s" added %sx %s to "%s"'):format(invokingResource, added, item.name, inv.label))
-			exports['brazzers-logs']:addLog('inventory', 'Added Item', ('"%s" added %sx %s to "%s"'):format(invokingResource, added, item.name, inv.label), 15844367, inv.id)
 		end
 
 		for i = 1, #toSlot do
