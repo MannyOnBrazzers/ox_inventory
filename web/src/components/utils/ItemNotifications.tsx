@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import { TransitionGroup } from 'react-transition-group';
 import useNuiEvent from '../../hooks/useNuiEvent';
-import { Fade } from '@mui/material';
 import useQueue from '../../hooks/useQueue';
 import { Locale } from '../../store/locale';
 import { getItemUrl } from '../../helpers';
 import { SlotWithItem } from '../../typings';
 import { Items } from '../../store/items';
+import Fade from './transitions/Fade';
 
 interface ItemNotificationProps {
   item: SlotWithItem;
@@ -19,7 +19,7 @@ export const ItemNotificationsContext = React.createContext<{
 } | null>(null);
 
 export const useItemNotifications = () => {
-  const itemNotificationsContext = React.useContext(ItemNotificationsContext);
+  const itemNotificationsContext = useContext(ItemNotificationsContext);
   if (!itemNotificationsContext) throw new Error(`ItemNotificationsContext undefined`);
   return itemNotificationsContext;
 };

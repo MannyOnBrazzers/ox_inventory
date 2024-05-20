@@ -74,6 +74,7 @@ return {
 		[`comet5`] = 3,
 		[`comet7`] = 3,
 		[`comet6`] = 3,
+		[`comet6scw`] = 3,
 		[`dune`] = 3,
 		[`dune2`] = 3,
 		[`dune3`] = 3,
@@ -111,6 +112,7 @@ return {
 		[`r8hycade`] = 3,
 		[`tempesta2`] = 3,
 		[`tempestaj`] = 3,
+		[`tempestaes`] = 3,
 		[`tenf2`] = 3,
 		[`tenf`] = 3,
 		[`bfinjection`] = 3,
@@ -268,6 +270,7 @@ return {
 			[`rhemslandstalker`] = {45, 550000},
 			-- D Class 
 			[`squaddie`] = {40, 600000},
+			[`benson`] = {75, 1000000},
 			[`wastelander`] = {50, 1000000},
 			[`lurcher`] = {35, 300000},
 			[`g6speedo`] = {50, 900000},
@@ -661,6 +664,9 @@ return {
 			[`policevig3`] = {30, 150000},
 			[`vincent2`] = {40, 150000},
 			[`remustwo`] = {40, 150000},
+			[`futowb`] = {30, 200000},
+			[`revolutionw`] = {50, 175000},
+			[`r300w`] = {30, 120000},
 
 			-- S Class
 			[`weevil2`] = {30, 50000},
@@ -704,6 +710,7 @@ return {
 			[`sultanrsv8`] = {30, 200000},
 			[`turismo2`] = {30, 100000},
 			[`tempestaj`] = {30, 100000},
+			[`tempestaes`] = {30, 100000},
 			[`r33`] = {30, 150000},
 			[`a6`] = {30, 300000},
 			[`gp1`] = {20, 75000},

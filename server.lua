@@ -29,7 +29,7 @@ function server.setPlayerInventory(player, data)
 	local inventory = {}
 	local totalWeight = 0
 
-	if data and next(data) then
+	if type(data) == 'table' then
 		local ostime = os.time()
 
 		for _, v in pairs(data) do
@@ -112,10 +112,11 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
     end
 
 	if data then
+        local isDataTable = type(data) == 'table'
 		if invType == 'stash' then
 			right = Inventory(data, left)
 			if right == false then return false end
-		elseif type(data) == 'table' then
+		elseif isDataTable then
 			if data.netid then
 				data.type = invType
 				right = Inventory(data)
@@ -164,6 +165,7 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 		}
 
 		if invType == 'container' then hookPayload.slot = left.containerSlot end
+		if isDataTable and data.netid then hookPayload.netId = data.netid end
 
 		if not TriggerEventHooks('openInventory', hookPayload) then return end
 
@@ -232,7 +234,7 @@ exports('forceOpenInventory', function(playerId, invType, data)
 	end
 end)
 
-local Licenses = data 'licenses'
+local Licenses = lib.load('data.licenses')
 
 lib.callback.register('ox_inventory:buyLicense', function(source, id)
 	local license = Licenses[id]
@@ -263,12 +265,31 @@ lib.callback.register('ox_inventory:getInventory', function(source, id)
 	}
 end)
 
+RegisterNetEvent('ox_inventory:usedItemInternal', function(slot)
+    local inventory = Inventory(source)
+
+    if not inventory then return end
+
+    local item = inventory.usingItem
+
+    if not item or item.slot ~= slot then
+        ---@todo
+        DropPlayer(inventory.id, 'sussy')
+
+        return
+    end
+
+    TriggerEvent('ox_inventory:usedItem', inventory.id, item.name, item.slot, next(item.metadata) and item.metadata)
+
+    inventory.usingItem = nil
+end)
+
 ---@param source number
 ---@param itemName string
 ---@param slot number?
 ---@param metadata { [string]: any }?
 ---@return table | boolean | nil
-lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, metadata)
+lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, metadata, noAnim)
 	local inventory = Inventory(source) --[[@as OxInventory]]
 
 	if inventory.player then
@@ -335,6 +356,7 @@ lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, m
 					return TriggerClientEvent('ox_lib:notify', source, { type = 'error', description = locale('item_not_enough', item.name) })
 				end
 			elseif not item.weapon and server.UseItem then
+                inventory.usingItem = data
 				-- This is used to call an external useItem function, i.e. ESX.UseItem / QBCore.Functions.CanUseItem
 				-- If an error is being thrown on item use there is no internal solution. We previously kept a list
 				-- of usable items which led to issues when restarting resources (for obvious reasons), but config
@@ -345,13 +367,16 @@ lib.callback.register('ox_inventory:useItem', function(source, itemName, slot, m
 
 			data.consume = consume
 
-			local success = lib.callback.await('ox_inventory:usingItem', source, data)
+            ---@type boolean
+			local success = lib.callback.await('ox_inventory:usingItem', source, data, noAnim)
 
 			if item.weapon then
 				inventory.weapon = success and slot or nil
 			end
 
 			if not success then return end
+
+            inventory.usingItem = data
 
 			if consume and consume ~= 0 and not data.component then
 				data = inventory.items[data.slot]
@@ -443,7 +468,6 @@ lib.addCommand({'additem', 'giveitem'}, {
 	restricted = 'group.admin',
 }, function(source, args)
 	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
-
 	local item = Items(args.item)
 
 	if item then
@@ -455,12 +479,11 @@ lib.addCommand({'additem', 'giveitem'}, {
 			return Citizen.Trace(('Failed to give %sx %s to player %s (%s)'):format(count, item.name, args.target, response))
 		end
 
-		src = source
 		source = Inventory(source) or { label = 'console', owner = 'console' }
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label))
-			exports['brazzers-logs']:addLog('admin', 'Gave Item', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label), 15844367, src)
+			exports['brazzers-logs']:addLog('admin', 'Gave Item', ('"%s" gave %sx %s to "%s"'):format(source.label, count, item.name, inventory.label), 15844367, source)
 		end
 	end
 end)
@@ -476,7 +499,6 @@ lib.addCommand('removeitem', {
 	restricted = 'group.admin',
 }, function(source, args)
 	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
-
 	local item = Items(args.item)
 
 	if item and args.count > 0 then
@@ -487,12 +509,11 @@ lib.addCommand('removeitem', {
 			return Citizen.Trace(('Failed to remove %sx %s from player %s (%s)'):format(args.count, item.name, args.target, response))
 		end
 
-		src = source
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label))
-			exports['brazzers-logs']:addLog('admin', 'Removed Item', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label), 15844367, src)
+			exports['brazzers-logs']:addLog('admin', 'Removed Item', ('"%s" removed %sx %s from "%s"'):format(source.label, args.count, item.name, inventory.label), 15844367, source)
 		end
 	end
 end)
@@ -508,7 +529,6 @@ lib.addCommand('setitem', {
 	restricted = 'group.admin',
 }, function(source, args)
 	if not exports['brazzers-scripts']:hasPermission(source, 'god') then return end
-	
 	local item = Items(args.item)
 
 	if item then
@@ -519,12 +539,11 @@ lib.addCommand('setitem', {
 			return Citizen.Trace(('Failed to set %s count to %sx for player %s (%s)'):format(item.name, args.count, args.target, response))
 		end
 
-		src = source
 		source = Inventory(source) or {label = 'console', owner = 'console'}
 
 		if server.loglevel > 0 then
 			lib.logger(source.owner, 'admin', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count))
-			exports['brazzers-logs']:addLog('admin', 'Set Item', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count), 15844367, src)
+			exports['brazzers-logs']:addLog('admin', 'Set Item', ('"%s" set "%s" %s count to %sx'):format(source.label, inventory.label, item.name, args.count), 15844367, source)
 		end
 	end
 end)
@@ -542,7 +561,7 @@ lib.addCommand('clearevidence', {
 	local hasPermission = group and server.isPlayerBoss(source, group, grade)
 
 	if hasPermission then
-		MySQL.query('DELETE FROM ox_inventory WHERE name = ?', {('evidence-%s'):format(args.evidence)})
+		MySQL.query('DELETE FROM ox_inventory WHERE name = ?', {('evidence-%s'):format(args.locker)})
 	end
 end)
 
@@ -593,14 +612,7 @@ lib.addCommand('viewinv', {
 	},
 	restricted = 'group.admin',
 }, function(source, args)
-	local invId = tonumber(args.invId) or args.invId
-	local inventory = invId ~= source and Inventory(invId)
-	local playerInventory = Inventory(source)
-
-	if playerInventory and inventory then
-		playerInventory:openInventory(inventory)
-		TriggerClientEvent('ox_inventory:viewInventory', source, inventory)
-	end
+	Inventory.InspectInventory(source, tonumber(args.invId) or args.invId)
 end)
 
 lib.callback.register('brazzers-inv:server:registerPersonalPouch', function(source, id)

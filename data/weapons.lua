@@ -28,6 +28,14 @@ return {
 			modelRotation = vec3(90.0, 90.0, 90.0),
 		},
 
+		['WEAPON_BATON'] = {
+			label = 'PD Baton',
+			weight = 6000,
+			durability = 0.1,
+			dropModel = `w_me_baton`,
+			modelRotation = vec3(90.0, 90.0, 90.0),
+		},
+
 		['WEAPON_HAMMER'] = {
 			label = 'Hammer',
 			weight = 8000,
@@ -1277,12 +1285,12 @@ return {
 			offset = 0.05,
 		},
 
-		['WEAPON_RAYCARBINE'] = {
-			label = 'Unholy Hellbringer',
+		--[[['WEAPON_RAYCARBINE'] = {
+			label = 'Blaster Rifle',
 			weight = 35000,
-			durability = 0.2,
+			durability = 0.1,
 			ammoname = 'laser_ammo'
-		},
+		},--]]
 
 		['WEAPON_FLAREGUN'] = {
 			label = 'Flare Gun',
@@ -1422,11 +1430,11 @@ return {
 				component = {
 					`COMPONENT_OIL_SUPP`,
 					`COMPONENT_AT_PI_SUPP`,
-					`COMPONENT_AT_AR_SUPP_02`,
-					`COMPONENT_AT_UZI_SUPP`,
-					`COMPONENT_AT_MUZZLE_04`,
-					`COMPONENT_AT_MUZZLE_M4`,
-					`COMPONENT_OIL_SUPP`,
+					--`COMPONENT_AT_AR_SUPP_02`,
+					--`COMPONENT_AT_UZI_SUPP`,
+					--`COMPONENT_AT_MUZZLE_04`,
+					--`COMPONENT_AT_MUZZLE_M4`,
+					--`COMPONENT_OIL_SUPP`,
 				},
 				usetime = 2500
 			}
@@ -1796,7 +1804,7 @@ return {
 		},
 		['laser_ammo'] = {
 			label = 'Uranium Cartridge',
-			weight = 3000,
+			weight = 0,
 		},
 	}
 }

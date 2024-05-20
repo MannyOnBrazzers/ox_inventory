@@ -308,6 +308,7 @@ return {
 		weight = 1000,
 		stack = false,
         degrade = 5760,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Can unlock basic things",
@@ -322,6 +323,7 @@ return {
 		weight = 3000,
 		stack = false,
         degrade = 11520,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Not a bad kit to have on hand.",
@@ -336,6 +338,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Why the fuck is this so heavy?",
@@ -349,6 +352,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Marked for police seizure",
@@ -362,6 +366,7 @@ return {
 		weight = 10000,
 		stack = true,
         degrade = 10800,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "",
@@ -377,6 +382,7 @@ return {
 		weight = 20000,
 		stack = true,
         degrade = 14400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "1 Time use - degrades engine parts more than basic tool kits, repairs engine to full.",
@@ -391,6 +397,7 @@ return {
 		weight = 5000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Good enough to get to a mechanic.",
@@ -418,6 +425,7 @@ return {
 		weight = 37000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Bullet/'s, Puncture/'s, all stopped....temporarily.. ",
@@ -431,6 +439,7 @@ return {
 		weight = 5000,
 		stack = false,
         degrade = 14400,
+		decay = true,
 		dropModel = `prop_cs_hand_radio`,
 		allowArmed = true,
 	},
@@ -448,6 +457,7 @@ return {
 		weight = 15000,
 		stack = true,
         degrade = 28800,
+		decay = true,
 		close = true,
 		description = "With this you can receive some police reports. It is not always effective.",
 		client = {
@@ -460,6 +470,7 @@ return {
 		weight = 100000,
 		stack = false,
         degrade = 28800,
+		decay = true,
 		close = true,
 		description = "I hear nessie is out there.",
 		client = {
@@ -473,6 +484,7 @@ return {
 		weight = 3000,
 		stack = false,
         degrade = 28800,
+		decay = true,
 		close = true,
 		client = {
 			image = "diving_tube.png",
@@ -497,6 +509,7 @@ return {
 		weight = 10000,
 		stack = true,
         degrade = 28800,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Watching a nice view though..",
@@ -555,6 +568,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 14400,
+		decay = true,
 		close = true,
 		description = "Expensive stuff or not",
 		client = {
@@ -568,6 +582,7 @@ return {
 		weight = 2500,
 		stack = false,
         degrade = 14400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Great for games and other fun stuff!",
@@ -853,6 +868,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 5760,
+		decay = true,
 		close = true,
 		description = "Used to craft food",
 		client = {
@@ -994,6 +1010,7 @@ return {
 		weight = 40000,
 		stack = false,
         degrade = 21600,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "1 Time use - repairs body to full",
@@ -1019,6 +1036,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		description = "Find things",
 		client = {
@@ -1032,6 +1050,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		description = "Equipment",
 		client = {
@@ -1045,6 +1064,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 21600,
+		decay = true,
 		close = true,
 		description = "Thin out some paint",
 		client = {
@@ -1057,6 +1077,7 @@ return {
 		weight = 150000,
 		stack = false,
         degrade = 86400,
+		decay = true,
 		close = true,
 		description = "Bzzzzz",
 		client = {
@@ -1116,6 +1137,7 @@ return {
 		weight = 50000,
 		stack = false,
         degrade = 21600,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Protects you from motorbike accidents.",
@@ -1129,6 +1151,7 @@ return {
 		weight = 50000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		description = "Easy setup and teardown. (Placeable Object)",
 		client = {
@@ -1153,6 +1176,7 @@ return {
 		weight = 1000,
 		stack = false,
         degrade = 28800,
+		decay = true,
 		close = true,
 		description = "This seed analyzer lets you sequence the DNA of a variety of seeds.",
 		client = {
@@ -1177,6 +1201,7 @@ return {
 		weight = 2000,
 		stack = false,
         degrade = 10800,
+		decay = true,
 		close = true,
 		description = "Used to plant groups of crops.",
 		client = {
@@ -1189,6 +1214,7 @@ return {
 		weight = 2000,
 		stack = false,
         degrade = 10800,
+		decay = true,
 		close = true,
 		description = "Used to harvest groups of crops.",
 		client = {
@@ -1203,6 +1229,7 @@ return {
 		weight = 250,
 		stack = false,
         degrade = 86400,
+		decay = true,
 		close = true,
 		description = "Bzzzzz",
 		client = {
@@ -1239,6 +1266,7 @@ return {
 		weight = 5000,
 		stack = true,
         degrade = 10080,
+		decay = true,
 		close = true,
 		description = "Used to craft food - be aware, food doesnt last forever!",
 		client = {
@@ -1576,6 +1604,7 @@ return {
 		label = 'Bandage',
 		weight = 3000,
 		degrade = 10080,
+		decay = true,
 		allowArmed = true,
 		client = {
 			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
@@ -1591,6 +1620,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 5040,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Government (PD/EMS/DOC) Issued Equipment",
@@ -1605,6 +1635,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 10080,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Adrenaline, gives a good pump! If you are not SWAT certified do not buy this.",
@@ -1619,6 +1650,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 5040,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "For excruciating pain, add a pill",
@@ -1633,6 +1665,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 5040,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Its a Joint, man.",
@@ -1662,6 +1695,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Used for ciggies",
 		client = {
@@ -1674,6 +1708,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Smoke sum...",
@@ -1688,6 +1723,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "A cuban one",
@@ -1702,6 +1738,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 8640,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Heals Wounds and Reduces Bleeding",
@@ -1716,6 +1753,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 5760,
+		decay = true,
 		close = false,
 		description = "Lettuce is good",
 		client = {
@@ -1728,6 +1766,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "A Nice sandwich to eat.",
 		client = {
@@ -1741,6 +1780,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Toast",
 		client = {
@@ -1753,6 +1793,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Sates Thirst",
 		client = {
@@ -1766,6 +1807,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 7200,
+		decay = true,
 		close = true,
 		description = "Used for business purposes",
 		client = {
@@ -1948,6 +1990,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Cola",
@@ -1962,6 +2005,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Twix Candy Bar",
@@ -1976,6 +2020,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Snickers Candy Bar",
@@ -1990,6 +2035,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Burrito",
 		client = {
@@ -2002,6 +2048,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Basically a long donut.",
 		client = {
@@ -2014,6 +2061,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Slightly Increases Stamina and Speed",
 		client = {
@@ -2026,6 +2074,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Powered by Sugar",
 		client = {
@@ -2039,6 +2088,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Great start to your morning",
 		client = {
@@ -2052,6 +2102,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Huh, can i resist?",
 		client = {
@@ -2064,6 +2115,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Sum Good hot waffle",
 		client = {
@@ -2076,6 +2128,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Sates Hunger and reduces stress.",
 		client = {
@@ -2088,6 +2141,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Just a lil bro of torpedo pretty much",
 		client = {
@@ -2101,6 +2155,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Made from real human titty milk.",
 		client = {
@@ -2126,6 +2181,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "The only thing the boys love at the yard",
 		client = {
@@ -2139,6 +2195,7 @@ return {
 		weight = 25000,
 		stack = true,
         degrade = 2160,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Looks as bad as the Sheriffs aim.",
@@ -2153,6 +2210,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Dont lick your fingers",
 		client = {
@@ -2166,6 +2224,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Its like I have ESPN or something",
 		client = {
@@ -2178,6 +2237,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Let the juice drip in your mouth",
@@ -2192,6 +2252,7 @@ return {
 		weight = 50000,
 		stack = false,
         degrade = 86400,
+		decay = true,
 		close = true,
 		description = "Cook food on it",
 		client = {
@@ -2223,6 +2284,7 @@ return {
 		weight = 10000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		description = "Marked for seizure by police",
 		client = {
@@ -2252,6 +2314,7 @@ return {
 		weight = 25000,
 		stack = true,
         degrade = 8640,
+		decay = true,
 		close = true,
 		description = "maybe it smells weird in here",
 		client = {
@@ -2466,6 +2529,7 @@ return {
 		weight = 50000,
 		stack = false,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Government (PD/EMS/DOC) Issued Equipment",
@@ -2480,6 +2544,7 @@ return {
 		weight = 5000,
 		stack = true,
 		degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Marked for Police Seizure",
@@ -2494,6 +2559,7 @@ return {
 		weight = 1000,
 		stack = true,
 		degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Marked for Police Seizure",
@@ -2532,6 +2598,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Considered Police Equipment - (only lasts around 10 seconds)",
@@ -2547,6 +2614,7 @@ return {
 		weight = 1000,
 		stack = true,
 		degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Works 100% of the time 60% of the time.",
@@ -2586,6 +2654,7 @@ return {
 		weight = 10000,
 		stack = false,
         degrade = 8640,
+		decay = true,
 		close = true,
 		description = "Mil-Spec. High price, low quality.",
 		client = {
@@ -2688,6 +2757,7 @@ return {
 		weight = 15000,
 		stack = false,
         degrade = 10080,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Break down rocks",
@@ -2702,6 +2772,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 10080,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Pickaxe",
@@ -2850,6 +2921,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Iwashi Sushi",
@@ -2864,6 +2936,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Akou-Dai Sushi",
@@ -2878,6 +2951,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Guchi Sushi",
@@ -2892,6 +2966,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Inada Sushi",
@@ -2906,6 +2981,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "O-Hyou Sushi",
@@ -2920,6 +2996,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Aji Sashimi",
@@ -2934,6 +3011,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Akou-Dai Sashimi",
@@ -2948,6 +3026,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "O-Hyou Sashimi",
@@ -2962,6 +3041,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Beef Sashimi",
@@ -2976,6 +3056,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Venison Sashimi",
@@ -2990,6 +3071,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Iwashi Ramen",
@@ -3004,6 +3086,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Aji Ramen",
@@ -3018,6 +3101,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "O-Hyou Ramen",
@@ -3032,6 +3116,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Chicken Ramen",
@@ -3046,6 +3131,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Beef Ramen",
@@ -3060,6 +3146,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Nishigashi Daifuki",
@@ -3074,6 +3161,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Matche Mille",
@@ -3088,6 +3176,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Uwu Cheesecake",
@@ -3102,6 +3191,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ramune",
@@ -3116,6 +3206,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ramune Apple",
@@ -3130,6 +3221,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ramune Blueberry",
@@ -3144,6 +3236,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ramune Cherry",
@@ -3158,6 +3251,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ramune Pineapple",
@@ -3172,6 +3266,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Boba Tea",
@@ -3186,6 +3281,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Matcha Boba Tea",
@@ -3200,6 +3296,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Lemon Boba Tea",
@@ -3214,6 +3311,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Ichigo Boba Tea",
@@ -3228,6 +3326,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Blueberry Boba Tea",
@@ -3242,6 +3341,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "UwU Green Tea",
@@ -3256,6 +3356,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "UwU Tea",
@@ -3272,6 +3373,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "One of the finest will it kill you?",
@@ -3286,6 +3388,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Money ?",
@@ -3300,6 +3403,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Doesnt this belong in a submarine?",
@@ -3314,6 +3418,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "It will stop your heart!",
@@ -3328,6 +3433,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Sates thirst and gives a sugar rush",
@@ -3342,6 +3448,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Fries or pommes?",
@@ -3356,6 +3463,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Cream Pie",
@@ -3370,6 +3478,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Put that glizzy in your mouth!",
@@ -3384,6 +3493,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Vegan Weirdos",
 		client = {
@@ -3397,6 +3507,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Not even worth it",
@@ -3411,6 +3522,7 @@ return {
 		weight = 0,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Baking Soda",
 		client = {
@@ -3434,6 +3546,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Low Quality. Used for restaurant food.",
 		client = {
@@ -3447,6 +3560,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Used to craft food - be aware, food doesnt last forever!",
 		client = {
@@ -3459,6 +3573,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 4320,
+		decay = true,
 		close = false,
 		description = "Used to craft food - be aware, food doesnt last forever!",
 		client = {
@@ -3507,6 +3622,7 @@ return {
 	["moontable"] = {
 		label = "Moonshine Table",
 		weight = 50000,
+		degrade = 43200,
 		stack = false,
 		close = true,
 		description = "Placeable near running water",
@@ -3520,6 +3636,7 @@ return {
 	["methtable"] = {
 		label = "Meth Table",
 		weight = 50000,
+		degrade = 43200,
 		stack = false,
 		close = true,
 		description = "Looks Like A Placeable Table",
@@ -3555,6 +3672,19 @@ return {
 			export = 'brazzers-meth.methlabcured',
 		},
 		dropModel = `bkr_prop_meth_smallbag_01a`,
+	},
+
+	["methpackage"] = {
+		label = "Suspicious Package (10 Grams)",
+		weight = 10000,
+		stack = false,
+        degrade = 43200,
+		close = true,
+		description = "Marked for police seizure",
+		client = {
+			image = "box-of-weed-12-18-oz.png",
+		},
+		dropModel = `prop_mp_drug_package`,
 	},
 
 	["crystalmeth"] = {
@@ -3717,7 +3847,7 @@ return {
 
 	["driedbud"] = {
 		label = "Dried Bud (100 Grams)",
-		weight = 10000,
+		weight = 30000,
 		stack = false,
         degrade = 12960,
 		close = true,
@@ -4274,6 +4404,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Keep that car sparkling clean, dawg.",
@@ -4289,6 +4420,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Keep that car clean, I guess.",
@@ -4304,6 +4436,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Atleast you tried.",
@@ -4319,6 +4452,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Super clean, unlike the hands of the BCSO.",
@@ -4334,6 +4468,7 @@ return {
 		weight = 3000,
 		stack = true,
         degrade = 86400,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Keep that car sparkling clean, dawg.",
@@ -4622,7 +4757,7 @@ return {
 	},
 
 	["gallerygem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4635,7 +4770,7 @@ return {
 	},
 
 	["citrine_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4648,7 +4783,7 @@ return {
 	},
 
 	["ruby_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4661,7 +4796,7 @@ return {
 	},
 
 	["sapphire_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4674,7 +4809,7 @@ return {
 	},
 
 	["jade_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4687,7 +4822,7 @@ return {
 	},
 
 	["onyx_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4700,7 +4835,7 @@ return {
 	},
 
 	["aquamarine_gem"] = {
-		label = "(G) Gemstone",
+		label = "Gemstone",
 		weight = 1000,
 		stack = false,
         degrade = 21600,
@@ -4810,6 +4945,7 @@ return {
 		weight = 10000,
 		stack = true,
         degrade = 19872,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		client = {
@@ -4824,11 +4960,12 @@ return {
 		weight = 0,
 		stack = true,
         degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Plug this in and KEEP MOVING. Or else.",
 		client = {
-			export = 'rahe-boosting.boostingdisabler',
+			event = 'boostingdisabler:use',
 		},
 		dropModel = `h4_prop_h4_card_hack_01a`,
 	},
@@ -4838,6 +4975,7 @@ return {
 		weight = 1000,
 		stack = true,
         degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Marked for Police Seizure",
@@ -4851,6 +4989,7 @@ return {
 		weight = 2500,
 		stack = false,
         degrade = 21600,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Use on a vehicle to alter its plate or change it back - 1 time use..",
@@ -4870,6 +5009,7 @@ return {
 		weight = 30000,
 		stack = false,
         degrade = 4881,
+		decay = true,
 		close = true,
 		description = "Store various products in this packaging!",
 		client = {
@@ -4883,6 +5023,7 @@ return {
 		weight = 10000,
 		stack = false,
         degrade = 4881,
+		decay = true,
 		close = true,
 		description = "Store various products in this packaging!",
 		client = {
@@ -5124,10 +5265,11 @@ return {
 	},
 
 	["practice_laptop"] = {
-		label = "Laptop",
+		label = "Gaming Laptop",
 		weight = 20000,
 		stack = false,
         degrade = 4881,
+		decay = true,
 		close = true,
 		description = "Practice makes perfect. ",
 		client = {
@@ -5137,7 +5279,7 @@ return {
 	},
 
 	["gacha_chest"] = {
-		label = "Gacha Chest",
+		label = "Gacha Box",
 		weight = 25000,
 		stack = false,
 		close = true,
@@ -5300,6 +5442,17 @@ return {
 		}
 	},
 
+	["panther"] = {
+		label = "Pet Panther",
+		weight = 0,
+		stack = false,
+		close = true,
+		description = "Definitely tamed. Definitely.",
+		client = {
+			image = "panther.png",
+		}
+	},
+
 	-- GANG SHIT
 
 	["gangspray"] = {
@@ -5307,6 +5460,7 @@ return {
 		weight = 2000,
 		stack = false,
         degrade = 129600,
+		decay = true,
 		close = true,
 		description = "Art.",
 		client = {
@@ -5321,6 +5475,7 @@ return {
 		weight = 1000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		description = "You know what to do with this...",
 		client = {
@@ -5335,6 +5490,7 @@ return {
 		weight = 5000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		description = "",
 		client = {
@@ -5351,6 +5507,7 @@ return {
 		weight = 50000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = false,
 		description = "For Broken Legs n Stuff",
 		client = {
@@ -5369,20 +5526,6 @@ return {
 		client = {
 			image = "documents.png",
 			export = 'brazzers-rental.rentalpapers',
-		}
-	},
-
-	["grapple_gun"] = {
-		label = "Grapple Gun",
-		weight = 30000,
-		stack = false,
-        degrade = 86400,
-		close = true,
-		allowArmed = true,
-		description = "This is some Batman shit. Marked for Police Seizure.",
-		client = {
-			image = "grapple.png",
-			export = 'rush-grapple.grapple_gun',
 		}
 	},
 
@@ -5502,6 +5645,7 @@ return {
 		weight = 20000,
 		stack = false,
         degrade = 43200,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Shawns going to yell at you",
@@ -5568,6 +5712,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5582,6 +5727,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5596,6 +5742,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5610,6 +5757,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5625,6 +5773,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5640,6 +5789,7 @@ return {
 		weight = 0,
 		stack = true,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		allowArmed = true,
 		description = "Template item from the Business Bureau",
@@ -5655,6 +5805,7 @@ return {
 		weight = 0,
 		stack = false,
 		degrade = 4320,
+		decay = true,
 		close = true,
 		description = "Template item from the Business Bureau",
 		client = {
@@ -5833,6 +5984,7 @@ return {
 		weight = 1000,
 		stack = false,
 		degrade = 43200,
+		decay = true,
 		close = false,
 		description = "",
 		client = {
@@ -5847,6 +5999,7 @@ return {
 		weight = 1000,
 		stack = false,
 		degrade = 43200,
+		decay = true,
 		close = false,
 		description = "",
 		client = {
@@ -5860,6 +6013,7 @@ return {
 		weight = 1000,
 		stack = false,
 		degrade = 43200,
+		decay = true,
 		close = false,
 		description = "",
 		client = {
@@ -5873,6 +6027,7 @@ return {
 		weight = 1000,
 		stack = false,
 		degrade = 43200,
+		decay = true,
 		close = false,
 		description = "",
 		client = {
@@ -5886,6 +6041,7 @@ return {
 		weight = 1000,
 		stack = false,
 		degrade = 43200,
+		decay = true,
 		close = false,
 		description = "",
 		client = {
@@ -6001,6 +6157,7 @@ return {
 		close = true,
 		consume = 0,
 		degrade = 7500,
+		decay = true,
 		description = "",
 		client = {
 			image = "newspaper.png",
@@ -6083,6 +6240,7 @@ return {
 		label = 'Disposable Turbo Kit',
 		weight = 10000,
 		degrade = 10080,
+		decay = true,
 		stack = false,
 		description = 'DIY Disposable Tunning Kit, try to not be too rough with it! (LOCAL CARS ONLY)',
 		client = {
@@ -6096,6 +6254,7 @@ return {
 		label = 'Disposable Engine Tuning Kit',
 		weight = 10000,
 		degrade = 10080,
+		decay = true,
 		stack = false,
 		description = 'DIY Disposable Tunning Kit, try to not be too rough with it! (LOCAL CARS ONLY)',
 		client = {
@@ -6109,6 +6268,7 @@ return {
 		label = 'Disposable Transmission Kit',
 		weight = 10000,
 		degrade = 10080,
+		decay = true,
 		stack = false,
 		description = 'DIY Disposable Tunning Kit, try to not be too rough with it! (LOCAL CARS ONLY)',
 		client = {
@@ -6119,7 +6279,7 @@ return {
 	},
 
 	['stolenart'] = {
-		label = 'Art (p)',
+		label = 'Artwork',
 		weight = 10000,
 		degrade = 10080,
 		stack = false,
@@ -6207,4 +6367,37 @@ return {
 			export = 'pirate-event.pineapple',
 		}
 	},--]]
+	-- watercooler script shit 
+
+	['empty_cup'] = {
+		label = 'Empty Cup',
+		weight = 1000,
+		degrade = 1000,
+		stack = false,
+		description = 'An empty styrofoam cup.',
+		client = {
+			image = "empty_cup.png",
+		},
+		dropModel = 'prop_plastic_cup_02',
+	},
+	['water_cup'] = {
+		label = 'Water Cup', 
+		weight = 1000,
+		degrade = 1000,
+		stack = false,
+		description = 'A cup full of refreshing water',
+		client = {
+			image = "water_cup.png",
+		},
+		dropModel = 'prop_cs_paper_cup',
+	},
+	['event_item'] = {
+		label = 'Event Item', 
+		weight = 500,
+		stack = false,
+		description = 'A special item for special events',
+		client = {
+			image = "may4th.png",
+		},
+	},
 }

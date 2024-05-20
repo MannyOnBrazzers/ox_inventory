@@ -9,19 +9,20 @@ local anims = {}
 anims[`GROUP_MELEE`] = { 'melee@holster', 'unholster', 200, 'melee@holster', 'holster', 600 }
 anims[`GROUP_PISTOL`] = { 'reaction@intimidation@cop@unarmed', 'intro', 400, 'reaction@intimidation@cop@unarmed', 'outro', 450 }
 anims[`GROUP_STUNGUN`] = anims[`GROUP_PISTOL`]
+anims[`GROUP_BATON`] = { 'anim@melee@colbaton@holster', 'unholster', 200, 'anim@melee@colbaton@holster', 'holster', 600 }
 
 local function vehicleIsCycle(vehicle)
 	local class = GetVehicleClass(vehicle)
 	return class == 8 or class == 13
 end
 
-function Weapon.Equip(item, data)
+function Weapon.Equip(item, data, noWeaponAnim)
 	local playerPed = cache.ped
 	local coords = GetEntityCoords(playerPed, true)
     local sleep
 
 	if client.weaponanims then
-		if cache.vehicle and vehicleIsCycle(cache.vehicle) then
+		if noWeaponAnim or (cache.vehicle and vehicleIsCycle(cache.vehicle)) then
 			goto skipAnim
 		end
 
@@ -86,7 +87,10 @@ function Weapon.Equip(item, data)
 	end
 
 	TriggerEvent('ox_inventory:currentWeapon', item)
-	Utils.ItemNotify({ item, 'ui_equipped' })
+
+	if client.weaponnotify then
+		Utils.ItemNotify({ item, 'ui_equipped' })
+	end
 
 	return item, sleep
 end
@@ -95,10 +99,7 @@ function Weapon.Disarm(currentWeapon, noAnim)
 	if currentWeapon?.timer then
 		currentWeapon.timer = nil
 
-		if source == '' then
-			TriggerServerEvent('ox_inventory:updateWeapon')
-		end
-
+        TriggerServerEvent('ox_inventory:updateWeapon')
 		SetPedAmmo(cache.ped, currentWeapon.hash, 0)
 
 		if client.weaponanims and not noAnim then
@@ -123,7 +124,10 @@ function Weapon.Disarm(currentWeapon, noAnim)
 
 		::skipAnim::
 
-		Utils.ItemNotify({ currentWeapon, 'ui_holstered' })
+		if client.weaponnotify then
+			Utils.ItemNotify({ currentWeapon, 'ui_holstered' })
+		end
+
 		TriggerEvent('ox_inventory:currentWeapon')
 	end
 

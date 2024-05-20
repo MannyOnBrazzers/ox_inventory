@@ -4,12 +4,13 @@ local shopTypes = {}
 local shops = {}
 local createBlip = require 'modules.utils.client'.CreateBlip
 
-for shopType, shopData in pairs(data('shops') --[[@as table<string, OxShop>]]) do
+for shopType, shopData in pairs(lib.load('data.shops') --[[@as table<string, OxShop>]]) do
 	local shop = {
 		name = shopData.name,
 		groups = shopData.groups or shopData.jobs,
 		blip = shopData.blip,
 		label = shopData.label,
+        icon = shopData.icon
 	}
 
 	if shared.target then
